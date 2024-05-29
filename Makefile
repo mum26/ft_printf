@@ -9,27 +9,28 @@ SRC_DIR = .
 SRCS    = ft_printf.c
 OBJS    = $(SRCS:.c=.o)
 
+.PHONY: all
 all: $(NAME)
 
 $(NAME): $(OBJS) libft/libft.a
-	$(AR) $@ $^
-	ranlib $@
+	$(AR) $(NAME) $(OBJS)
+	ranlib $(NAME)
 
 libft/libft.a:
-	@$(MAKE) -C libft
+	$(MAKE) -C libft bonus
 
 .c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
+.PHONY: clean
 clean:
-	@$(MAKE) -C libft clean
+	$(MAKE) -C libft clean
 	$(RM) $(OBJS)
 
+.PHONY: fclean
 fclean:
-	@$(MAKE) -C libft fclean
-	$(RM) $(OBJS)
-	$(RM) $(NAME)
+	$(MAKE) -C libft fclean
+	$(RM) $(OBJS) $(NAME)
 
+.PHONY: re
 re: fclean all
-
-.PHONY: all clean fclean re
