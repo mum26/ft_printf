@@ -12,13 +12,31 @@
 
 #include "libftprintf.h"
 
-int	ft_isspecifier(int c)
-{
-	if (c == 'c' || c == 's' || c == 'p' || c ==  'd' || c == 'i'
-			|| c == 'u' || c == 'x' || c == 'X' || c == '%')
-			return (1);
-	return (0);
-}
+//int	ft_isspecifier(int c)
+//{
+//	size_t len;
+//
+//	len = 0;
+//	if (c == 'c')
+//		len = print_char(ap, int);
+//	else if (c == 's')
+//		len = print_str(ap, char *);
+//	else if (c == 'p')
+//		len = printf_();
+//	else if (c == 'd')
+//		len = printf_int(ap, int);
+//	else if (c == 'i')
+//		len = printf_int(ap, int);
+//	else if (c == 'u')
+//		len = print_
+//	else if (c == 'x')
+//		len = print_
+//	else if (c == 'X')
+//		len = print_
+//	else if (c == '%')
+//		len = write(PRINT_FD, '%', 1);
+//	return (len);
+//}
 
 static int	print_int(va_list *ap)
 {
@@ -26,6 +44,8 @@ static int	print_int(va_list *ap)
 
 	val = va_arg(*ap, int);
 	ft_putnbr_fd(val, PRINT_FD);
+	if (val < 0)
+		return (ft_get_int_digit_cnt(val) + 1);
 	return (ft_get_int_digit_cnt(val));
 }
 
@@ -64,29 +84,31 @@ int	ft_printf(char const *fmt, ...)
 	fi = 0;
 	while (fmt[fi])
 	{
-		if (fmt[fi] == '%' || INT_MAX <= fi)
+		if (INT_MAX <= fi)
 		{
-			if (0 < fi)
-				write(PRINT_FD, fmt, fi - 1);
-			fmt += fi + 1;
-			len += fi;
+			len += write(PRINT_FD, fmt, fi);
+			fmt += fi;
 			fi = 0;
-			si = 0;
-			while (specifiers[si].func != NULL)
-			{
-				if (specifiers[si].specifier == *fmt)
-				{
-					len = specifiers[si].func(&ap);
-					fmt++;
-					break;
-				}
-				si++;
-			}
 		}
-		else
-			fi++;
+		if (fmt[fi++] != '%')
+			continue;
+		len += write(PRINT_FD, fmt, fi - 1);
+		fmt += fi;
+		fi = 0;
+		si = 0;
+		while (specifiers[si].func != NULL)
+		{
+			if (specifiers[si].specifier == *fmt)
+			{
+				len += specifiers[si].func(&ap);
+				fmt++;
+				break;
+			}
+			si++;
+		}
 	}
 	va_end(ap);
-	ft_putstr_fd((char *)fmt, PRINT_FD);
-	return ((int)(len + fi));
+	if (fi)
+		len += write(PRINT_FD, fmt, fi);
+	return ((int)len);
 }

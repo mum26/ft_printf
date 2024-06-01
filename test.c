@@ -22,12 +22,12 @@
 
 int	main(void)
 {
-	int	num = 1234567890;
+	int	num = -1234567890;
 	char str[] = "hellllo";
 	int	len;
 	int	len_origin;
-	len = ft_printf("  %d  %s  \n", num, str);
+	len = ft_printf("  %d  %%%%s  \n", num, str);
 	len_origin = printf("  %d  %s  \n", num, str);
-	ft_printf("len = %d\nlen_origin = %d\n", len, len_origin);
+	ft_printf("ft_printf = %d\nprintf = %d\n", len, len_origin);
 	return (0);
 }
