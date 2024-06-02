@@ -1,6 +1,5 @@
 NAME     = libftprintf.a
 CFLAGS   = -Wall -Wextra -Werror -g -Ilibft
-LDFLAGS  = -Llibft -lft
 AR       = ar rcs
 SRCS     = ft_printf.c
 OBJS     = $(SRCS:.c=.o)
@@ -19,7 +18,7 @@ $(LIB_PATH):
 	$(MAKE) -C $(LIB_NAME) bonus
 
 .c.o:
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:
