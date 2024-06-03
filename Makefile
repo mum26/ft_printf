@@ -1,7 +1,7 @@
 NAME     = libftprintf.a
 CFLAGS   = -Wall -Wextra -Werror -g -Ilibft
 AR       = ar rcs
-SRCS     = ft_printf.c
+SRCS     = ft_printf.c handling_char.c handling_dec.c handling_hex.c
 OBJS     = $(SRCS:.c=.o)
 LIB_NAME = libft
 LIB_PATH = ./$(LIB_NAME)/$(LIB_NAME).a

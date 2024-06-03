@@ -18,16 +18,17 @@
 //    return 0;
 //}
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	main(void)
 {
 	int	num = -1234567890;
-	char str[] = "hellllo";
+//	char str[] = "hellllo";
+	char	c = 'X';
 	int	len;
 	int	len_origin;
-	len = ft_printf("  %d  %%%%s  \n", num, str);
-	len_origin = printf("  %d  %s  \n", num, str);
+	len = ft_printf("%c  %i  %s  \n", c, num, NULL);
+	len_origin = printf("%c  %i  %s  \n", c, num, NULL);
 	ft_printf("ft_printf = %d\nprintf = %d\n", len, len_origin);
 	return (0);
 }
