@@ -20,15 +20,22 @@
 
 #include "ft_printf.h"
 
+//int	main(void)
+//{
+//	int	num = -1234567890;
+//	unsigned int unum = 2147483648;
+//	char str[] = "hellllo";
+//	char	c = 'X';
+//	int	len;
+//	int	len_origin;
+//	len = ft_printf("%d %c  %s   %i    %s      %u\n", num, c, str, num, NULL, unum);
+//	len_origin = printf("%d %c  %s   %i    %s      %u\n", num, c, str, num, NULL, unum);
+//	ft_printf("ft_printf = %d\nprintf = %d\n", len, len_origin);
+//	return (0);
+//}
+
 int	main(void)
 {
-	int	num = -1234567890;
-//	char str[] = "hellllo";
-	char	c = 'X';
-	int	len;
-	int	len_origin;
-	len = ft_printf("%c  %i  %s  \n", c, num, NULL);
-	len_origin = printf("%c  %i  %s  \n", c, num, NULL);
-	ft_printf("ft_printf = %d\nprintf = %d\n", len, len_origin);
+	printf("%X", -1);
 	return (0);
 }

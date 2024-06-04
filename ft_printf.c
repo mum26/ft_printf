@@ -6,7 +6,7 @@
 /*   By: sishige <sishige@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 20:09:29 by sishige           #+#    #+#             */
-/*   Updated: 2024/06/03 21:25:14 by sishige          ###   ########.fr       */
+/*   Updated: 2024/06/04 21:00:47 by sishige          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int	convert_specifier(va_list ap, int c)
 		return (print_char(ap));
 	else if (c == 's')
 		return (print_str(ap));
-	//	else if (c == 'p')
-	//		return(printf_add(ap));
 	else if (c == 'd' || c == 'i')
 		return (print_int(ap));
-	//	else if (c == 'u')
-	//		return(print_u_int(ap));
-	//	else if (c == 'x' || c == 'X')
-	//		return(print_hex(ap, c));
+	else if (c == 'u')
+		return(print_u_int(ap));
+//	else if (c == 'x' || c == 'X')
+//		return(print_hex(ap, c));
+//	else if (c == 'p')
+//		return(printf_add(ap));
 	else if (c == '%')
 		return (write(PRINT_FD, "%", 1));
 	return (-1);

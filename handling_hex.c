@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handling_hexadecimal.c                             :+:      :+:    :+:   */
+/*   handling_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sishige <sishige@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 18:56:10 by sishige           #+#    #+#             */
-/*   Updated: 2024/06/03 21:26:52 by sishige          ###   ########.fr       */
+/*   Created: 2024/06/04 20:07:02 by sishige           #+#    #+#             */
+/*   Updated: 2024/06/04 21:00:31 by sishige          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 int	print_hex(va_list ap, int is_upper)
 {
 	int		val;
-	char	*hex;
+	char	*hex_digitis;
+	int		len;
 
 	if (is_upper)
-		hex = "0123456789ABCDEF";
-	hex = "0123456789abcdef";
+		hexi_digits = "0123456789ABCDEF";
+	hex_digits = "0123456789abcdef";
 	val = va_arg(ap, int);
-	ft_putnbr_fd(val, PRINT_FD);
+	while (0 < val)
+	{
+		write(PRINT_FD, hex_digits[])
+	}
 	return (ft_get_int_digit_cnt(val));
 }
 
