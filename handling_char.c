@@ -6,7 +6,7 @@
 /*   By: sishige <sishige@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:55:09 by sishige           #+#    #+#             */
-/*   Updated: 2024/06/04 20:07:20 by sishige          ###   ########.fr       */
+/*   Updated: 2024/06/07 17:54:20 by sishige          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	print_char(va_list ap)
 	int	val;
 
 	val = va_arg(ap, int);
-	ft_putchar_fd(val, PRINT_FD);
+	write(PRINT_FD, &val, 1);
 	return (1);
 }
 

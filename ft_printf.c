@@ -6,13 +6,13 @@
 /*   By: sishige <sishige@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 20:09:29 by sishige           #+#    #+#             */
-/*   Updated: 2024/06/04 21:00:47 by sishige          ###   ########.fr       */
+/*   Updated: 2024/06/07 18:23:06 by sishige          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	convert_specifier(va_list ap, int c)
+static int	convert_specifier(va_list ap, int c)
 {
 	if (c == 'c')
 		return (print_char(ap));
@@ -22,13 +22,13 @@ int	convert_specifier(va_list ap, int c)
 		return (print_int(ap));
 	else if (c == 'u')
 		return(print_u_int(ap));
-//	else if (c == 'x' || c == 'X')
-//		return(print_hex(ap, c));
-//	else if (c == 'p')
-//		return(printf_add(ap));
+	else if (c == 'x' || c == 'X')
+		return(print_hex((unsigned int)va_arg(ap, int), ft_isupper(c)));
+	else if (c == 'p')
+		return(print_add(va_arg(ap, unsigned long long)));
 	else if (c == '%')
 		return (write(PRINT_FD, "%", 1));
-	return (-1);
+	return (0);
 }
 
 int	ft_printf(char const *fmt, ...)

@@ -26,16 +26,36 @@
 //	unsigned int unum = 2147483648;
 //	char str[] = "hellllo";
 //	char	c = 'X';
+//	void	*ptr = &c;
 //	int	len;
 //	int	len_origin;
-//	len = ft_printf("%d %c  %s   %i    %s      %u\n", num, c, str, num, NULL, unum);
-//	len_origin = printf("%d %c  %s   %i    %s      %u\n", num, c, str, num, NULL, unum);
+//	len = ft_printf("%x %c  %s   %X    %s      %u %p\n", num, c, str, num, NULL, unum, ptr);
+//	len_origin = printf("%x %c  %s   %X    %s      %u %p\n", num, c, str, num, NULL, unum, ptr);
 //	ft_printf("ft_printf = %d\nprintf = %d\n", len, len_origin);
 //	return (0);
 //}
 
-int	main(void)
+//int	main(void)
+//{
+//	int n = -1;
+//	int	len = 0;
+//	ft_printf("%X\n", n);
+//	printf("%X\n", n);
+//	printf("%p\n", &n);
+//	return (0);
+//}
+
+//int	main(void)
+//{
+//	unsigned char	byte = 0x1D;
+//	char	hex_digits[] = "0123456789ABCDEF";
+//    putchar(hex_digits[(byte >> 4) & 0xF]); // 上位4ビットを表示
+//    putchar(hex_digits[byte & 0xF]);       // 下位4ビットを表示
+//	return (0);
+//}
+
+int main(void)
 {
-	printf("%X", -1);
+	ft_printf("%c", '.');
 	return (0);
 }

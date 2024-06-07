@@ -6,7 +6,7 @@
 /*   By: sishige <sishige@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 18:42:06 by sishige           #+#    #+#             */
-/*   Updated: 2024/06/04 19:02:29 by sishige          ###   ########.fr       */
+/*   Updated: 2024/06/06 21:27:15 by sishige          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFTPRINTF_H
@@ -28,6 +28,6 @@ int	print_int(va_list ap);
 int	print_u_int(va_list ap);
 
 /* handring_hex */
-int	print_hex(va_list ap, int is_upper);
-int	print_add(va_list ap);
+int	print_hex(unsigned long long ull, int is_upper);
+int	print_add(unsigned long long ull);
 #endif
