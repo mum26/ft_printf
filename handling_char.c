@@ -6,28 +6,20 @@
 /*   By: sishige <sishige@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:55:09 by sishige           #+#    #+#             */
-/*   Updated: 2024/06/07 17:54:20 by sishige          ###   ########.fr       */
+/*   Updated: 2024/06/09 16:08:45 by sishige          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_char(va_list ap)
+int	print_char(int c)
 {
-	int	val;
-
-	val = va_arg(ap, int);
-	write(PRINT_FD, &val, 1);
-	return (1);
+	return (write(PRINT_FD, &c, 1));
 }
 
-int	print_str(va_list ap)
+int	print_str(char *str)
 {
-	char	*val;
-
-	val = va_arg(ap, char *);
-	if (!val)
+	if (!str)
 		return (write(PRINT_FD, "(null)", 6));
-	ft_putstr_fd(val, PRINT_FD);
-	return (ft_strlen(val));
+	return (write(PRINT_FD, str, ft_strlen(str));
 }
