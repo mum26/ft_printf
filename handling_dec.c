@@ -6,28 +6,36 @@
 /*   By: sishige <sishige@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 20:06:31 by sishige           #+#    #+#             */
-/*   Updated: 2024/06/05 15:59:19 by sishige          ###   ########.fr       */
+/*   Updated: 2024/06/09 19:18:52 by sishige          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_int(va_list ap)
+int	print_int(int n)
 {
-	int	val;
+	int		len;
+	char	*str;
 
-	val = va_arg(ap, int);
-	ft_putnbr_fd(val, PRINT_FD);
-	if (val < 0)
-		return (ft_get_cnt_int_digit(val) + 1);
-	return (ft_get_cnt_int_digit(val));
+	str = ft_lltoa_base((long long)n, DEC_DIGITS);
+	if (!str)
+		return (0);
+	len = ft_strlen(str);
+	ft_putstr_fd(str, PRINT_FD);
+	free(str);
+	return (len);
 }
 
-int	print_u_int(va_list ap)
+int	print_u_int(unsigned int un)
 {
-	unsigned int	val;
+	int		len;
+	char	*str;
 
-	val = va_arg(ap, unsigned int);
-	ft_put_unbr_fd(val, PRINT_FD);
-	return (ft_get_cnt_uint_digit(val));
+	str = ft_ulltoa_base((unsigned long long)un, DEC_DIGITS);
+	if (!str)
+		return (0);
+	ft_putstr_fd(str, PRINT_FD);
+	len = ft_strlen(str);
+	free(str);
+	return (len);
 }

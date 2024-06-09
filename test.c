@@ -56,6 +56,9 @@
 
 int main(void)
 {
-	ft_printf("%c", '.');
+	long n = LONG_MIN;
+	unsigned long long ulln = (unsigned long long)(-(n + 1)) + 1;
+	ft_putendl_fd(ft_ulltoa_base(ulln, "0123456789"), 1);
 	return (0);
 }
+
