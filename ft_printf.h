@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sishige <sishige@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 18:42:06 by sishige           #+#    #+#             */
-/*   Updated: 2024/06/10 18:19:49 by sishige          ###   ########.fr       */
+/*   Created: 2024/06/10 19:34:03 by sishige           #+#    #+#             */
+/*   Updated: 2024/06/10 19:34:27 by sishige          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
 
-#include <stdarg.h>
-#include "libft/libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+
+# include "libft/libft.h"
+# include <stdarg.h>
 
 # define PRINT_FD STDOUT_FILENO
 

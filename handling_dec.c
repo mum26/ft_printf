@@ -6,7 +6,7 @@
 /*   By: sishige <sishige@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 20:06:31 by sishige           #+#    #+#             */
-/*   Updated: 2024/06/10 18:08:10 by sishige          ###   ########.fr       */
+/*   Updated: 2024/06/10 19:12:42 by sishige          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ int	print_int(int n)
 
 	str = ft_lltoa_base((long long)n, DEC_DIGITS);
 	if (!str)
-		return (0);
-	len = ft_strlen(str);
-	ft_putstr_fd(str, PRINT_FD);
+		return (-1);
+	len = write(PRINT_FD, str, ft_strlen(str));
 	free(str);
 	return (len);
 }
@@ -33,9 +32,8 @@ int	print_u_int(unsigned int un)
 
 	str = ft_ulltoa_base((unsigned long long)un, DEC_DIGITS);
 	if (!str)
-		return (0);
-	ft_putstr_fd(str, PRINT_FD);
-	len = ft_strlen(str);
+		return (-1);
+	len = write(PRINT_FD, str, ft_strlen(str));
 	free(str);
 	return (len);
 }
