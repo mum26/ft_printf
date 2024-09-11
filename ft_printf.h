@@ -19,16 +19,19 @@
 # define PRINT_FD STDOUT_FILENO
 
 int	ft_printf(char const *fmt, ...);
+int	ft_fprintf(FILE *fp, char const *fmt, ...);
+int	convert_specifier(int fd, va_list ap, int c);
+int	ft_fileno(FILE *fp);
 
 /* handring_char */
-int	print_char(int c);
-int	print_str(char *str);
+int	print_char(int fd, int c);
+int	print_str(int fd, char *str);
 
 /* handring_dec */
-int	print_int(int n);
-int	print_u_int(unsigned int un);
+int	print_int(int fd, int n);
+int	print_u_int(int fd, unsigned int un);
 
 /* handring_hex */
-int	print_hex(unsigned long long ulln, int is_upper);
-int	print_add(unsigned long long ulln);
+int	print_hex(int fd, unsigned long long ulln, int is_upper);
+int	print_add(int fd, unsigned long long ulln);
 #endif

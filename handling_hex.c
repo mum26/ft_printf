@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	print_hex(unsigned long long ulln, int is_upper)
+int	print_hex(int fd, unsigned long long ulln, int is_upper)
 {
 	char	*str;
 	int		len;
@@ -23,12 +23,12 @@ int	print_hex(unsigned long long ulln, int is_upper)
 		str = ft_ulltoa_base(ulln, HEX_DIGITS_LOW);
 	if (!str)
 		return (-1);
-	len = write(PRINT_FD, str, ft_strlen(str));
+	len = write(fd, str, ft_strlen(str));
 	free(str);
 	return (len);
 }
 
-int	print_add(unsigned long long ulln)
+int	print_add(int fd, unsigned long long ulln)
 {
 	char	*str;
 	char	*tmp;
@@ -41,7 +41,7 @@ int	print_add(unsigned long long ulln)
 	free(tmp);
 	if (!str)
 		return (-1);
-	len = write(PRINT_FD, str, ft_strlen(str));
+	len = write(fd, str, ft_strlen(str));
 	free(str);
 	return (len);
 }

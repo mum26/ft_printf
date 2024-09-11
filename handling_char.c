@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-int	print_char(int c)
+int	print_char(int fd, int c)
 {
-	return (write(PRINT_FD, &c, 1));
+	return (write(fd, &c, 1));
 }
 
-int	print_str(char *str)
+int	print_str(int fd, char *str)
 {
 	if (!str)
-		return (write(PRINT_FD, "(null)", 6));
-	return (write(PRINT_FD, str, ft_strlen(str)));
+		return (write(fd, "(null)", 6));
+	return (write(fd, str, ft_strlen(str)));
 }

@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handling_dec.c                                     :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sishige <sishige@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 20:06:31 by sishige           #+#    #+#             */
-/*   Updated: 2024/06/10 19:12:42 by sishige          ###   ########.fr       */
+/*   Created: 2024/05/25 20:09:29 by sishige           #+#    #+#             */
+/*   Updated: 2024/06/10 19:29:16 by sishige          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_int(int fd, int n)
+int	ft_fprintf(FILE *fp, char const *fmt, ...)
 {
+	va_list	ap;
 	int		len;
-	char	*str;
+	int		tmp;
+	int		fd;
 
-	str = ft_lltoa_base((long long)n, DEC_DIGITS);
-	if (!str)
-		return (-1);
-	len = write(fd, str, ft_strlen(str));
-	free(str);
-	return (len);
-}
-
-int	print_u_int(int fd, unsigned int un)
-{
-	int		len;
-	char	*str;
-
-	str = ft_ulltoa_base((unsigned long long)un, DEC_DIGITS);
-	if (!str)
-		return (-1);
-	len = write(fd, str, ft_strlen(str));
-	free(str);
-	return (len);
+	fd = ft_fileno(fp);
+	va_start(ap, fmt);
+	len = 0;
+	while (*fmt)
+	{
+		if (*fmt++ == '%')
+		{
+			tmp = convert_specifier(fd, ap, *fmt++);
+			if (tmp == -1)
+				return (-1);
+			len += tmp;
+		}
+		else if (write(fd, fmt - 1, 1) == -1)
+			return (-1);
+		else
+			len++;
+	}
+	va_end(ap);
+	return ((int)len);
 }
